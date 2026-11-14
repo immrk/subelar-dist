@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "baseCurrency": "USD",
+  "updatedAt": "2026-11-15T00:00:00Z",
+  "ratesToUSD": {
+    "USD": 1.0,
+    "CNY": 0.1389,
+    "JPY": 0.0065,
+    "EUR": 1.08,
+    "GBP": 1.27,
+    "HKD": 0.1285
+  }
+}

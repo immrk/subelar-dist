@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-15T00:00:00Z",
+  "plugins": [
+    {
+      "id": "codex",
+      "displayName": "OpenAI Codex",
+      "version": "1.1.0",
+      "builtin": true,
+      "summary": {
+        "zh": "通过本机 Codex OAuth 凭证毫秒级直查 ChatGPT Plus/Pro/Team 5h 与 7d 额度、套餐名与 Credits 余额（支持多账号并发）",
+        "en": "Query ChatGPT Plus/Pro/Team 5h & 7d quotas, plan tier, and Credits via local Codex OAuth credentials"
+      }
+    },
+    {
+      "id": "agy",
+      "displayName": "Google Antigravity (AGY)",
+      "version": "1.1.0",
+      "builtin": true,
+      "summary": {
+        "zh": "通过本机 AGY Google OAuth 凭证直查 Gemini 与 Claude/GPT 模型池 5h/7d 额度（支持多账号归档与自动续期）",
+        "en": "Query Google Antigravity Gemini & Claude/GPT 5h/7d quotas via Google Cloud Code OAuth"
+      }
+    },
+    {
+      "id": "claude",
+      "displayName": "Anthropic Claude Code",
+      "version": "1.0.0",
+      "builtin": true,
+      "summary": {
+        "zh": "遵循官方 CLAUDE_CONFIG_DIR 隔离规范，通过 OAuth 用量端点与 CLI 缓存安全查询 Claude Pro/Max 多账号额度",
+        "en": "Query Claude Code 5h, 7d, and model-scoped quotas via OAuth usage API & isolated CLAUDE_CONFIG_DIR"
+      }
+    }
+  ]
+}

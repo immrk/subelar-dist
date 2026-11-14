@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-15T00:00:00Z",
+  "presets": [
+    {
+      "id": "openai_codex_pro_200",
+      "name": "ChatGPT Pro (Codex)",
+      "price": 200.0,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "codex"
+    },
+    {
+      "id": "openai_codex_pro_100",
+      "name": "ChatGPT Pro Lite (Codex)",
+      "price": 100.0,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "codex"
+    },
+    {
+      "id": "openai_codex_plus",
+      "name": "ChatGPT Plus (Codex)",
+      "price": 20.0,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "codex"
+    },
+    {
+      "id": "google_ai_pro_agy",
+      "name": "Google AI Pro (AGY)",
+      "price": 19.99,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "agy"
+    },
+    {
+      "id": "google_ai_ultra_agy",
+      "name": "Google AI Ultra (AGY)",
+      "price": 249.99,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "agy"
+    },
+    {
+      "id": "claude_code_max_100",
+      "name": "Claude Max 5x",
+      "price": 100.0,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "claude"
+    },
+    {
+      "id": "claude_code_max_200",
+      "name": "Claude Max 20x",
+      "price": 200.0,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "claude"
+    },
+    {
+      "id": "claude_code_pro",
+      "name": "Claude Pro",
+      "price": 20.0,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "claude"
+    },
+    {
+      "id": "cursor_pro",
+      "name": "Cursor Pro",
+      "price": 20.0,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "devTools",
+      "providerId": "none"
+    },
+    {
+      "id": "icloud_plus",
+      "name": "iCloud+ 2TB",
+      "price": 68.0,
+      "currencyCode": "CNY",
+      "billingCycle": "monthly",
+      "category": "cloud",
+      "providerId": "none"
+    }
+  ]
+}
