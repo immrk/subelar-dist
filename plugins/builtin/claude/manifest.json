@@ -1,0 +1,11 @@
+{
+  "id": "claude",
+  "name": "Anthropic Claude",
+  "version": "1.2.0",
+  "tier": "builtin",
+  "builtin": true,
+  "entry": "plugin.py",
+  "authType": "oauth_or_cli",
+  "supportsMultiAccount": true,
+  "description": "遵循官方 CLAUDE_CONFIG_DIR 隔离规范，通过 Keychain / .credentials.json 与 OAuth 用量端点查询 Claude Pro/Max 多账号额度"
+}

@@ -1,14 +1,14 @@
 {
-  "schemaVersion": 1,
-  "updatedAt": "2026-11-15T00:00:00Z",
-  "latestCliVersion": "0.3.0",
+  "schemaVersion": 2,
+  "updatedAt": "2026-11-15T10:00:00Z",
+  "latestCliVersion": "0.4.0",
   "minCompatibleCliVersion": "0.2.0",
-  "latestIosVersion": "0.3.0",
+  "latestIosVersion": "0.4.0",
   "upgradeCommand": {
     "unix": "curl -fsSL https://raw.githubusercontent.com/immrk/subelar-dist/main/install.sh | sh",
     "windows": "irm https://raw.githubusercontent.com/immrk/subelar-dist/main/install.ps1 | iex"
   },
   "installShellUrl": "https://raw.githubusercontent.com/immrk/subelar-dist/main/install.sh",
   "installPowerShellUrl": "https://raw.githubusercontent.com/immrk/subelar-dist/main/install.ps1",
-  "releaseNotes": "v0.3.0：新增插件化采集微内核、OAuth 轻量接口毫秒级多账号查询（Codex / AGY / Claude）、静默热更新清单与跨平台 CLI 工具链。"
+  "releaseNotes": "v0.4.0：重构统一插件架构（公开仓 builtin 随包构建 + community 按需安装），新增 Cursor 社区插件（支持周限额、Grok Bot、Free Credit 赠金与 On-demand 按量支出），全端支持动态扩展插件展示。"
 }

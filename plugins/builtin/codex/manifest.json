@@ -1,0 +1,11 @@
+{
+  "id": "codex",
+  "name": "OpenAI Codex",
+  "version": "1.2.0",
+  "tier": "builtin",
+  "builtin": true,
+  "entry": "plugin.py",
+  "authType": "oauth_or_cli",
+  "supportsMultiAccount": true,
+  "description": "通过本机 Codex OAuth 凭证 (Keychain / ~/.codex/auth.json) 毫秒级直查 ChatGPT Plus/Pro/Team 5h 与 7d 额度、套餐名与 Credits 余额"
+}
