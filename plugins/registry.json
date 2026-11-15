@@ -1,90 +1,35 @@
 {
-  "schemaVersion": 2,
-  "updatedAt": "2026-11-15T10:00:00Z",
-  "repository": "https://github.com/immrk/subelar-dist",
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-15T00:00:00Z",
   "plugins": [
     {
-      "id": "agy",
-      "name": "Google Antigravity",
-      "displayName": "Google Antigravity",
-      "version": "1.2.0",
-      "tier": "builtin",
+      "id": "codex",
+      "displayName": "OpenAI Codex",
+      "version": "1.1.0",
       "builtin": true,
-      "entry": "plugin.py",
-      "authType": "oauth_or_cli",
-      "supportsMultiAccount": true,
-      "artifactPath": "plugins/builtin/agy/plugin.py",
-      "manifestPath": "plugins/builtin/agy/manifest.json",
-      "downloadUrl": "https://raw.githubusercontent.com/immrk/subelar-dist/main/plugins/builtin/agy/plugin.py",
-      "manifestUrl": "https://raw.githubusercontent.com/immrk/subelar-dist/main/plugins/builtin/agy/manifest.json",
-      "sha256": "dcf372dd2d760488f836a6ac73f012c29325452fe24a7e07c0732ed328da3c1b",
-      "description": "通过本机 AGY Google OAuth 凭证与 agy CLI 直查 Gemini 与 Claude/GPT 模型池 5h/7d 额度",
       "summary": {
-        "zh": "通过本机 AGY Google OAuth 凭证与 agy CLI 直查 Gemini 与 Claude/GPT 模型池 5h/7d 额度",
-        "en": "通过本机 AGY Google OAuth 凭证与 agy CLI 直查 Gemini 与 Claude/GPT 模型池 5h/7d 额度"
+        "zh": "通过本机 Codex OAuth 凭证毫秒级直查 ChatGPT Plus/Pro/Team 5h 与 7d 额度、套餐名与 Credits 余额（支持多账号并发）",
+        "en": "Query ChatGPT Plus/Pro/Team 5h & 7d quotas, plan tier, and Credits via local Codex OAuth credentials"
+      }
+    },
+    {
+      "id": "agy",
+      "displayName": "Google Antigravity (AGY)",
+      "version": "1.1.0",
+      "builtin": true,
+      "summary": {
+        "zh": "通过本机 AGY Google OAuth 凭证直查 Gemini 与 Claude/GPT 模型池 5h/7d 额度（支持多账号归档与自动续期）",
+        "en": "Query Google Antigravity Gemini & Claude/GPT 5h/7d quotas via Google Cloud Code OAuth"
       }
     },
     {
       "id": "claude",
-      "name": "Anthropic Claude",
-      "displayName": "Anthropic Claude",
-      "version": "1.2.0",
-      "tier": "builtin",
-      "builtin": true,
-      "entry": "plugin.py",
-      "authType": "oauth_or_cli",
-      "supportsMultiAccount": true,
-      "artifactPath": "plugins/builtin/claude/plugin.py",
-      "manifestPath": "plugins/builtin/claude/manifest.json",
-      "downloadUrl": "https://raw.githubusercontent.com/immrk/subelar-dist/main/plugins/builtin/claude/plugin.py",
-      "manifestUrl": "https://raw.githubusercontent.com/immrk/subelar-dist/main/plugins/builtin/claude/manifest.json",
-      "sha256": "6972e366fd6e0f803bfb4e7ec5d79ccc7b033653ea781fe4f3f3de190143191e",
-      "description": "遵循官方 CLAUDE_CONFIG_DIR 隔离规范，通过 Keychain / .credentials.json 与 OAuth 用量端点查询 Claude Pro/Max 多账号额度",
-      "summary": {
-        "zh": "遵循官方 CLAUDE_CONFIG_DIR 隔离规范，通过 Keychain / .credentials.json 与 OAuth 用量端点查询 Claude Pro/Max 多账号额度",
-        "en": "遵循官方 CLAUDE_CONFIG_DIR 隔离规范，通过 Keychain / .credentials.json 与 OAuth 用量端点查询 Claude Pro/Max 多账号额度"
-      }
-    },
-    {
-      "id": "codex",
-      "name": "OpenAI Codex",
-      "displayName": "OpenAI Codex",
-      "version": "1.2.0",
-      "tier": "builtin",
-      "builtin": true,
-      "entry": "plugin.py",
-      "authType": "oauth_or_cli",
-      "supportsMultiAccount": true,
-      "artifactPath": "plugins/builtin/codex/plugin.py",
-      "manifestPath": "plugins/builtin/codex/manifest.json",
-      "downloadUrl": "https://raw.githubusercontent.com/immrk/subelar-dist/main/plugins/builtin/codex/plugin.py",
-      "manifestUrl": "https://raw.githubusercontent.com/immrk/subelar-dist/main/plugins/builtin/codex/manifest.json",
-      "sha256": "6d29ea1b5e0c793517e50b733d3b1999c8e9c384e6cacdfbacefa33f6b1dee51",
-      "description": "通过本机 Codex OAuth 凭证 (Keychain / ~/.codex/auth.json) 毫秒级直查 ChatGPT Plus/Pro/Team 5h 与 7d 额度、套餐名与 Credits 余额",
-      "summary": {
-        "zh": "通过本机 Codex OAuth 凭证 (Keychain / ~/.codex/auth.json) 毫秒级直查 ChatGPT Plus/Pro/Team 5h 与 7d 额度、套餐名与 Credits 余额",
-        "en": "通过本机 Codex OAuth 凭证 (Keychain / ~/.codex/auth.json) 毫秒级直查 ChatGPT Plus/Pro/Team 5h 与 7d 额度、套餐名与 Credits 余额"
-      }
-    },
-    {
-      "id": "cursor",
-      "name": "Cursor",
-      "displayName": "Cursor",
+      "displayName": "Anthropic Claude Code",
       "version": "1.0.0",
-      "tier": "community",
-      "builtin": false,
-      "entry": "plugin.py",
-      "authType": "oauth_or_keychain",
-      "supportsMultiAccount": true,
-      "artifactPath": "plugins/community/cursor/plugin.py",
-      "manifestPath": "plugins/community/cursor/manifest.json",
-      "downloadUrl": "https://raw.githubusercontent.com/immrk/subelar-dist/main/plugins/community/cursor/plugin.py",
-      "manifestUrl": "https://raw.githubusercontent.com/immrk/subelar-dist/main/plugins/community/cursor/manifest.json",
-      "sha256": "957f44958235e8c08040566407073231e99096d322027f92b8fc58483e683c46",
-      "description": "社区插件：参考 Magpie opencode-cursor-auth 实现，通过 macOS Keychain (cursor-access-token) / ~/.cursor/auth.json / Cursor IDE 直连采集 Cursor 套餐周限额、Grok Bot 额度、Free Credit 赠金与 On-demand 按量支出",
+      "builtin": true,
       "summary": {
-        "zh": "社区插件：参考 Magpie opencode-cursor-auth 实现，通过 macOS Keychain (cursor-access-token) / ~/.cursor/auth.json / Cursor IDE 直连采集 Cursor 套餐周限额、Grok Bot 额度、Free Credit 赠金与 On-demand 按量支出",
-        "en": "社区插件：参考 Magpie opencode-cursor-auth 实现，通过 macOS Keychain (cursor-access-token) / ~/.cursor/auth.json / Cursor IDE 直连采集 Cursor 套餐周限额、Grok Bot 额度、Free Credit 赠金与 On-demand 按量支出"
+        "zh": "遵循官方 CLAUDE_CONFIG_DIR 隔离规范，通过 OAuth 用量端点与 CLI 缓存安全查询 Claude Pro/Max 多账号额度",
+        "en": "Query Claude Code 5h, 7d, and model-scoped quotas via OAuth usage API & isolated CLAUDE_CONFIG_DIR"
       }
     }
   ]

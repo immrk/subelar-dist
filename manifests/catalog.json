@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 2,
-  "updatedAt": "2026-11-15T10:00:00Z",
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-15T00:00:00Z",
   "presets": [
     {
       "id": "openai_codex_pro_200",
@@ -9,8 +9,7 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "codex",
-      "iconName": "terminal.fill"
+      "providerId": "codex"
     },
     {
       "id": "openai_codex_pro_100",
@@ -19,8 +18,7 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "codex",
-      "iconName": "terminal.fill"
+      "providerId": "codex"
     },
     {
       "id": "openai_codex_plus",
@@ -29,8 +27,7 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "codex",
-      "iconName": "terminal.fill"
+      "providerId": "codex"
     },
     {
       "id": "google_ai_pro_agy",
@@ -39,8 +36,7 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "agy",
-      "iconName": "sparkles"
+      "providerId": "agy"
     },
     {
       "id": "google_ai_ultra_agy",
@@ -49,8 +45,7 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "agy",
-      "iconName": "sparkles"
+      "providerId": "agy"
     },
     {
       "id": "claude_code_max_100",
@@ -59,8 +54,7 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "claude",
-      "iconName": "brain.head.profile"
+      "providerId": "claude"
     },
     {
       "id": "claude_code_max_200",
@@ -69,8 +63,7 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "claude",
-      "iconName": "brain.head.profile"
+      "providerId": "claude"
     },
     {
       "id": "claude_code_pro",
@@ -79,28 +72,16 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "claude",
-      "iconName": "brain.head.profile"
+      "providerId": "claude"
     },
     {
       "id": "cursor_pro",
-      "name": "Cursor Pro / Premium",
+      "name": "Cursor Pro",
       "price": 20.0,
       "currencyCode": "USD",
       "billingCycle": "monthly",
-      "category": "ai",
-      "providerId": "cursor",
-      "iconName": "cursorarrow.rays"
-    },
-    {
-      "id": "cursor_ultra",
-      "name": "Cursor Ultra",
-      "price": 200.0,
-      "currencyCode": "USD",
-      "billingCycle": "monthly",
-      "category": "ai",
-      "providerId": "cursor",
-      "iconName": "cursorarrow.rays"
+      "category": "devTools",
+      "providerId": "none"
     },
     {
       "id": "icloud_plus",
@@ -108,9 +89,8 @@
       "price": 68.0,
       "currencyCode": "CNY",
       "billingCycle": "monthly",
-      "category": "normal",
-      "providerId": "none",
-      "iconName": "icloud.fill"
+      "category": "cloud",
+      "providerId": "none"
     }
   ]
 }
