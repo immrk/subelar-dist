@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "updatedAt": "2026-11-15T00:00:00Z",
+  "schemaVersion": 2,
+  "updatedAt": "2026-11-16T00:00:00Z",
   "presets": [
     {
       "id": "openai_codex_pro_200",
@@ -9,7 +9,9 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "codex"
+      "providerId": "codex",
+      "iconName": "brand.openai",
+      "brandColor": "#10A37F"
     },
     {
       "id": "openai_codex_pro_100",
@@ -18,7 +20,9 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "codex"
+      "providerId": "codex",
+      "iconName": "brand.openai",
+      "brandColor": "#10A37F"
     },
     {
       "id": "openai_codex_plus",
@@ -27,25 +31,9 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "codex"
-    },
-    {
-      "id": "google_ai_pro_agy",
-      "name": "Google AI Pro (AGY)",
-      "price": 19.99,
-      "currencyCode": "USD",
-      "billingCycle": "monthly",
-      "category": "ai",
-      "providerId": "agy"
-    },
-    {
-      "id": "google_ai_ultra_agy",
-      "name": "Google AI Ultra (AGY)",
-      "price": 249.99,
-      "currencyCode": "USD",
-      "billingCycle": "monthly",
-      "category": "ai",
-      "providerId": "agy"
+      "providerId": "codex",
+      "iconName": "brand.openai",
+      "brandColor": "#10A37F"
     },
     {
       "id": "claude_code_max_100",
@@ -54,7 +42,9 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "claude"
+      "providerId": "claude",
+      "iconName": "brand.claude",
+      "brandColor": "#D97757"
     },
     {
       "id": "claude_code_max_200",
@@ -63,7 +53,9 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "claude"
+      "providerId": "claude",
+      "iconName": "brand.claude",
+      "brandColor": "#D97757"
     },
     {
       "id": "claude_code_pro",
@@ -72,16 +64,108 @@
       "currencyCode": "USD",
       "billingCycle": "monthly",
       "category": "ai",
-      "providerId": "claude"
+      "providerId": "claude",
+      "iconName": "brand.claude",
+      "brandColor": "#D97757"
+    },
+    {
+      "id": "google_ai_pro_agy",
+      "name": "Google AI Pro (AGY)",
+      "price": 19.99,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "agy",
+      "iconName": "brand.antigravity",
+      "brandColor": "#4285F4"
+    },
+    {
+      "id": "google_ai_ultra_agy",
+      "name": "Google AI Ultra (AGY)",
+      "price": 249.99,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "agy",
+      "iconName": "brand.antigravity",
+      "brandColor": "#4285F4"
     },
     {
       "id": "cursor_pro",
-      "name": "Cursor Pro",
+      "name": "Cursor Pro / Premium",
       "price": 20.0,
       "currencyCode": "USD",
       "billingCycle": "monthly",
-      "category": "devTools",
-      "providerId": "none"
+      "category": "ai",
+      "providerId": "cursor",
+      "iconName": "brand.cursor",
+      "brandColor": "#18181B"
+    },
+    {
+      "id": "cursor_ultra",
+      "name": "Cursor Ultra",
+      "price": 200.0,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "cursor",
+      "iconName": "brand.cursor",
+      "brandColor": "#18181B"
+    },
+    {
+      "id": "github_copilot_pro",
+      "name": "GitHub Copilot Pro",
+      "price": 10.0,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "none",
+      "iconName": "brand.copilot",
+      "brandColor": "#6E40C9"
+    },
+    {
+      "id": "perplexity_pro",
+      "name": "Perplexity Pro",
+      "price": 20.0,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "none",
+      "iconName": "brand.perplexity",
+      "brandColor": "#20808D"
+    },
+    {
+      "id": "youtube_premium",
+      "name": "YouTube Premium",
+      "price": 13.99,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "normal",
+      "providerId": "none",
+      "iconName": "brand.youtube",
+      "brandColor": "#FF0000"
+    },
+    {
+      "id": "netflix_premium",
+      "name": "Netflix",
+      "price": 15.49,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "normal",
+      "providerId": "none",
+      "iconName": "brand.netflix",
+      "brandColor": "#E50914"
+    },
+    {
+      "id": "spotify_premium",
+      "name": "Spotify Premium",
+      "price": 11.99,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "normal",
+      "providerId": "none",
+      "iconName": "brand.spotify",
+      "brandColor": "#1DB954"
     },
     {
       "id": "icloud_plus",
@@ -89,8 +173,109 @@
       "price": 68.0,
       "currencyCode": "CNY",
       "billingCycle": "monthly",
-      "category": "cloud",
-      "providerId": "none"
+      "category": "normal",
+      "providerId": "none",
+      "iconName": "brand.icloud",
+      "brandColor": "#007AFF"
+    },
+    {
+      "id": "apple_music",
+      "name": "Apple Music",
+      "price": 11.0,
+      "currencyCode": "CNY",
+      "billingCycle": "monthly",
+      "category": "normal",
+      "providerId": "none",
+      "iconName": "brand.applemusic",
+      "brandColor": "#FA243C"
+    },
+    {
+      "id": "apple_one",
+      "name": "Apple One",
+      "price": 19.95,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "normal",
+      "providerId": "none",
+      "iconName": "brand.apple",
+      "brandColor": "#1D1D1F"
+    },
+    {
+      "id": "bilibili_vip",
+      "name": "哔哩哔哩大会员",
+      "price": 168.0,
+      "currencyCode": "CNY",
+      "billingCycle": "yearly",
+      "category": "normal",
+      "providerId": "none",
+      "iconName": "brand.bilibili",
+      "brandColor": "#FB7299"
+    },
+    {
+      "id": "disney_plus",
+      "name": "Disney+",
+      "price": 13.99,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "normal",
+      "providerId": "none",
+      "iconName": "brand.disneyplus",
+      "brandColor": "#113CCF"
+    },
+    {
+      "id": "x_premium",
+      "name": "X Premium",
+      "price": 8.0,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "normal",
+      "providerId": "none",
+      "iconName": "brand.x",
+      "brandColor": "#0F1419"
+    },
+    {
+      "id": "notion_plus",
+      "name": "Notion Plus",
+      "price": 10.0,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "ai",
+      "providerId": "none",
+      "iconName": "brand.notion",
+      "brandColor": "#191919"
+    },
+    {
+      "id": "telegram_premium",
+      "name": "Telegram Premium",
+      "price": 4.99,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "normal",
+      "providerId": "none",
+      "iconName": "brand.telegram",
+      "brandColor": "#26A5E4"
+    },
+    {
+      "id": "figma_pro",
+      "name": "Figma Professional",
+      "price": 15.0,
+      "currencyCode": "USD",
+      "billingCycle": "monthly",
+      "category": "normal",
+      "providerId": "none",
+      "iconName": "brand.figma",
+      "brandColor": "#F24E1E"
+    },
+    {
+      "id": "playstation_plus",
+      "name": "PlayStation Plus",
+      "price": 54.0,
+      "currencyCode": "HKD",
+      "billingCycle": "monthly",
+      "category": "normal",
+      "providerId": "none",
+      "iconName": "brand.playstation",
+      "brandColor": "#00439C"
     }
   ]
 }

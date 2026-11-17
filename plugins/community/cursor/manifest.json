@@ -5,6 +5,9 @@
   "tier": "community",
   "builtin": false,
   "entry": "plugin.py",
+  "icon": "brand.cursor",
+  "iconFile": "icon.svg",
+  "brandColor": "#18181B",
   "authType": "oauth_or_keychain",
   "supportsMultiAccount": true,
   "description": "社区插件：参考 Magpie opencode-cursor-auth 实现，通过 macOS Keychain (cursor-access-token) / ~/.cursor/auth.json / Cursor IDE 直连采集 Cursor 套餐周限额、Grok Bot 额度、Free Credit 赠金与 On-demand 按量支出"

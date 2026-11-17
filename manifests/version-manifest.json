@@ -1,14 +1,18 @@
 {
-  "schemaVersion": 1,
-  "updatedAt": "2026-11-15T00:00:00Z",
-  "latestCliVersion": "0.3.0",
+  "schemaVersion": 2,
+  "updatedAt": "2026-11-17T05:54:34Z",
+  "latestCliVersion": "0.5.0",
   "minCompatibleCliVersion": "0.2.0",
-  "latestIosVersion": "0.3.0",
+  "latestIosVersion": "0.4.0",
   "upgradeCommand": {
     "unix": "curl -fsSL https://raw.githubusercontent.com/immrk/subelar-dist/main/install.sh | sh",
     "windows": "irm https://raw.githubusercontent.com/immrk/subelar-dist/main/install.ps1 | iex"
   },
   "installShellUrl": "https://raw.githubusercontent.com/immrk/subelar-dist/main/install.sh",
   "installPowerShellUrl": "https://raw.githubusercontent.com/immrk/subelar-dist/main/install.ps1",
-  "releaseNotes": "v0.3.0：新增插件化采集微内核、OAuth 轻量接口毫秒级多账号查询（Codex / AGY / Claude）、静默热更新清单与跨平台 CLI 工具链。"
+  "releaseNotes": {
+    "zh": "Replace hand-drawn geometric icons with 29 verbatim official brand SVGs (@lobehub/icons + simple-icons, including dedicated Google Antigravity icon), add pure-Swift W3C SVG renderer, and support dynamic plugin iconSvg delivery across Mac Agent, iOS, Widgets, and Apple Watch.",
+    "en": "Replace hand-drawn geometric icons with 29 verbatim official brand SVGs (@lobehub/icons + simple-icons, including dedicated Google Antigravity icon), add pure-Swift W3C SVG renderer, and support dynamic plugin iconSvg delivery across Mac Agent, iOS, Widgets, and Apple Watch."
+  },
+  "recommendedMinCliVersion": "0.5.0"
 }

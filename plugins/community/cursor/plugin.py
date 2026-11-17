@@ -587,7 +587,14 @@ def capture_account(env: Dict[str, str], vault: Any, alias: Optional[str] = None
     email = str(me_data.get("email") or "").strip()
     plan_info = plan_data.get("planInfo") if isinstance(plan_data.get("planInfo"), dict) else {}
     plan_name = str(plan_info.get("planName") or "Premium").strip() or "Premium"
-    account_id = email or (jwt_subject(token).split("|")[-1] if jwt_subject(token) else "cursor_primary")
+    sub = jwt_subject(token)
+    sub_tail = sub.split("|")[-1] if sub else ""
+    account_id = email or sub_tail or "cursor_primary"
+
+    if email and hasattr(vault, "remove_account"):
+        for stale_id in ("cursor_primary", sub_tail):
+            if stale_id and stale_id != account_id:
+                vault.remove_account("cursor", stale_id)
 
     profile_dir = vault.ensure_profile_dir("cursor", account_id)
     try:
@@ -607,7 +614,12 @@ def capture_account(env: Dict[str, str], vault: Any, alias: Optional[str] = None
         plan_tier=plan_name,
         alias=alias,
         config_dir=str(profile_dir),
-        auth_payload={"account_id": account_id, "email": email or account_id, "plan_tier": plan_name},
+        auth_payload={
+            "account_id": account_id,
+            "email": email or account_id,
+            "plan_tier": plan_name,
+            "jwt_sub": sub,
+        },
     )
 
 
@@ -637,18 +649,41 @@ def collect_quota(
 
     accounts_out: List[AccountSnapshot] = []
     seen_emails: set[str] = set()
+    seen_tokens: set[str] = set()
+    seen_subjects: set[str] = set()
+
+    def _mark_seen(acc: AccountSnapshot, tok: str = "") -> None:
+        if acc.email:
+            seen_emails.add(acc.email.lower())
+        if acc.account_id:
+            seen_emails.add(acc.account_id.lower())
+        if tok:
+            seen_tokens.add(tok)
+            subj = jwt_subject(tok)
+            if subj:
+                seen_subjects.add(subj)
+                seen_emails.add(subj.split("|")[-1].lower())
 
     # 1. Collect active local Cursor account
     if active_token:
+        active_sub = jwt_subject(active_token)
+        fallback_id = active_sub.split("|")[-1] if active_sub else "cursor_primary"
         active_snap = fetch_cursor_account_snapshot(
             token=active_token,
-            account_id_fallback="cursor_primary",
+            account_id_fallback=fallback_id,
             is_active=True,
         )
         if active_snap and active_snap.status == "ok":
-            # Preserve user alias if already in vault
+            # Preserve user alias if already in vault (including from placeholder records)
             matched_rec = next(
-                (r for r in stored_records if r.account_id == active_snap.account_id or r.email == active_snap.email),
+                (
+                    r
+                    for r in stored_records
+                    if r.account_id == active_snap.account_id
+                    or r.email == active_snap.email
+                    or (active_sub and str((r.auth_payload or {}).get("jwt_sub") or "") == active_sub)
+                    or (r.account_id in ("cursor_primary", fallback_id) and r.alias)
+                ),
                 None,
             )
             if matched_rec and matched_rec.alias:
@@ -665,9 +700,23 @@ def collect_quota(
                     error_message=active_snap.error_message,
                 )
             accounts_out.append(active_snap)
-            seen_emails.add(active_snap.email.lower())
-            seen_emails.add(active_snap.account_id.lower())
+            _mark_seen(active_snap, active_token)
             if vault is not None:
+                # Purge any legacy placeholder record (`cursor_primary` / raw user_id) for this same token
+                if hasattr(vault, "remove_account"):
+                    for stale_rec in list(stored_records):
+                        if stale_rec.account_id == active_snap.account_id:
+                            continue
+                        stale_home = Path(stale_rec.config_dir) if stale_rec.config_dir else None
+                        stale_tok = discover_local_cursor_token(cursor_home=stale_home) if stale_home else ""
+                        stale_sub = jwt_subject(stale_tok) if stale_tok else str((stale_rec.auth_payload or {}).get("jwt_sub") or "")
+                        if (
+                            stale_rec.account_id in ("cursor_primary", fallback_id)
+                            or (stale_tok and stale_tok == active_token)
+                            or (active_sub and stale_sub and stale_sub == active_sub)
+                        ):
+                            vault.remove_account("cursor", stale_rec.account_id)
+
                 profile_dir = vault.ensure_profile_dir("cursor", active_snap.account_id)
                 try:
                     auth_file = profile_dir / "auth.json"
@@ -696,11 +745,13 @@ def collect_quota(
                         "account_id": active_snap.account_id,
                         "email": active_snap.email,
                         "plan_tier": active_snap.plan_tier,
+                        "jwt_sub": active_sub,
                     },
                     snapshot=active_snap,
                 )
+                stored_records = vault.list_accounts("cursor")
 
-    # 2. Collect any additional stored accounts in AccountVault
+    # 2. Collect any additional distinct stored accounts in AccountVault
     for rec in stored_records:
         if rec.account_id.lower() in seen_emails or (rec.email and rec.email.lower() in seen_emails):
             continue
@@ -708,6 +759,12 @@ def collect_quota(
         tok = discover_local_cursor_token(cursor_home=profile_home) if profile_home else ""
         if not tok and isinstance(rec.auth_payload, dict):
             tok = str(rec.auth_payload.get("access_token") or rec.auth_payload.get("accessToken") or "")
+
+        tok_sub = jwt_subject(tok) if tok else str((rec.auth_payload or {}).get("jwt_sub") or "")
+        if (tok and tok in seen_tokens) or (tok_sub and tok_sub in seen_subjects):
+            if vault is not None and hasattr(vault, "remove_account") and rec.account_id.lower() not in seen_emails:
+                vault.remove_account("cursor", rec.account_id)
+            continue
 
         if tok:
             snap = fetch_cursor_account_snapshot(
@@ -719,9 +776,15 @@ def collect_quota(
                 cursor_home=profile_home,
             )
             if snap and snap.status == "ok":
+                if snap.account_id.lower() in seen_emails or (snap.email and snap.email.lower() in seen_emails):
+                    if vault is not None and hasattr(vault, "remove_account") and rec.account_id != snap.account_id:
+                        vault.remove_account("cursor", rec.account_id)
+                    continue
                 accounts_out.append(snap)
-                seen_emails.add(snap.account_id.lower())
+                _mark_seen(snap, tok)
                 if vault is not None:
+                    if hasattr(vault, "remove_account") and rec.account_id != snap.account_id:
+                        vault.remove_account("cursor", rec.account_id)
                     vault.upsert_account(
                         provider_id="cursor",
                         account_id=snap.account_id,
@@ -734,19 +797,22 @@ def collect_quota(
         if rec.last_snapshot:
             try:
                 cached = AccountSnapshot.from_dict(rec.last_snapshot)
-                accounts_out.append(
-                    AccountSnapshot(
-                        account_id=rec.account_id,
-                        email=rec.email or cached.email,
-                        alias=rec.alias or cached.alias,
-                        plan_tier=rec.plan_tier or cached.plan_tier,
-                        status="cached",
-                        is_active=(len(accounts_out) == 0),
-                        updated_at=cached.updated_at,
-                        windows=cached.windows,
-                        badges=cached.badges,
-                    )
+                c_email = (rec.email or cached.email or "").lower()
+                if c_email and c_email in seen_emails:
+                    continue
+                cached_snap = AccountSnapshot(
+                    account_id=rec.account_id,
+                    email=rec.email or cached.email,
+                    alias=rec.alias or cached.alias,
+                    plan_tier=rec.plan_tier or cached.plan_tier,
+                    status="cached",
+                    is_active=(len(accounts_out) == 0),
+                    updated_at=cached.updated_at,
+                    windows=cached.windows,
+                    badges=cached.badges,
                 )
+                accounts_out.append(cached_snap)
+                _mark_seen(cached_snap, tok)
             except Exception:
                 pass
 

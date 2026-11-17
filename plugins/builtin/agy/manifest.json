@@ -5,6 +5,9 @@
   "tier": "builtin",
   "builtin": true,
   "entry": "plugin.py",
+  "icon": "brand.antigravity",
+  "iconFile": "icon.svg",
+  "brandColor": "#4285F4",
   "authType": "oauth_or_cli",
   "supportsMultiAccount": true,
   "description": "通过本机 AGY Google OAuth 凭证与 agy CLI 直查 Gemini 与 Claude/GPT 模型池 5h/7d 额度"
